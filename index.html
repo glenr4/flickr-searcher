@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flickr Searcher</title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.js"></script>
+	<script src="js/app.js"></script>
+</head>
+
+<body>
+	<h1>Flickr Searcher</h1>
+	<form name="searchForm" novalidate ng-submit="searchForm.$valid && submit()">
+		<input type="text" name="searchTag" placeholder="Enter a tag to search for" ng-model="searchTag" ng-required="searchForm.$submitted">
+		
+		<div ng-messages="searchForm.searchTag.$error">
+			<p class="input-error-msg" ng-message="required">This field is required</p>
+		</div>
+		
+		<button type="submit" name="submit">Submit</button>
+
+	</form>
+</body>
+</html>
