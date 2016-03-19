@@ -4,6 +4,7 @@ angular.module('flickrApp', ['ngMessages'])
 	
 
 	$scope.submit = function(){
+
 		var url = "https://api.flickr.com/services/rest";
 		var params = {
 	    method: 'flickr.photos.search',
@@ -20,6 +21,10 @@ angular.module('flickrApp', ['ngMessages'])
 		.then(function(response){
 			$scope.photos = response.data.photos.photo;
 		});
+
+		// Reset form
+		$scope.searchTag = "";
+		$scope.searchForm.$setPristine();
 	};
 
 
