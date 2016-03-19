@@ -1,7 +1,7 @@
-angular.module('flickrApp', ['ngMessages'])
-.controller('flickrCtrl', function($scope, $http){
+angular.module('flickrApp', ['ngMessages', 'ngAnimate'])
+.controller('flickrCtrl', function($scope, $http, $timeout){
 
-	
+	$scope.imgFade = false;
 
 	$scope.submit = function(){
 
@@ -21,25 +21,48 @@ angular.module('flickrApp', ['ngMessages'])
 		.then(function(response){
 			$scope.photos = response.data.photos.photo;
 
+			$timeout(function() {
+				$scope.imgFade = true;	
+			}, 0);
+			
+
+			console.log(response);
+
 			// Update search status
-			searchStatus(false);
-		});
+			foundStatus(response);
+			},
+
+			function(){
+				searchError();
+			}
+		);
 
 		// Update search status
-		searchStatus(true);
+		searchStatus();
 	};
 
-	searchStatus = function(searching){
-		if (searching) {
-			$scope.searchStatus = "Searching Flickr for photos tagged with '"+ $scope.searchTag +"'";
+	searchStatus = function(){
+		$scope.searchStatus = "Searching Flickr for photos tagged with '"+ $scope.searchTag +"'";
 
-			// Reset form
-			$scope.searchTag = "";
-			$scope.searchForm.$setPristine();
+		// Reset form
+		$scope.searchTag = "";
+		$scope.searchForm.$setPristine();
+	};
+
+	foundStatus = function(response){
+		$scope.searchStatus = "We found "+ response.data.photos.total +" results for '"+ response.config.params.tags +"'";
+	};
+
+	searchError = function(){
+		$scope.searchStatus = "Sorry there was an unexpected error from the Flickr server, please try again later";
+	}
+
+	// Testing
+	$scope.fade = function(){
+		if ($scope.imgFade){
+			$scope.imgFade = false;
 		} else {
-			$scope.searchStatus = "";			
-		};
+			$scope.imgFade = true;
+		}
 	};
-
-
 });
