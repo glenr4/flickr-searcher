@@ -53,13 +53,4 @@ angular.module('flickrApp', ['ngMessages', 'ngAnimate'])
 	searchError = function(){
 		$scope.searchStatus = "Sorry there was an unexpected error from the Flickr server, please try again later";
 	}
-
-	// Testing
-	$scope.fade = function(){
-		if ($scope.imgFade){
-			$scope.imgFade = false;
-		} else {
-			$scope.imgFade = true;
-		}
-	};
 });

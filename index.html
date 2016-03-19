@@ -27,8 +27,6 @@
 	</section>
 
 	<section id="imageSection">
-		
-
 		<div ng-repeat="photo in photos" class="inline-block">
 			<img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" alt={{searchTag}} ng-class="{'fade-in':imgFade, 'opaque': !imgFade}" class="tiled">
 		</div>
