@@ -1,3 +1,44 @@
+* {
+	box-sizing: border-box;
+}
+
+/*Layout*/
+#formSection {
+	max-width: 20em;
+	/*max-width: 500px;*/
+	margin: 0 auto;
+	text-align: center;
+}
+
+#imageSection {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.tiled {
+	max-width: 300px;
+	max-height: auto;
+	padding: 5px;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.input-error-msg {
+
+}
+
+/*Fonts*/
+h1,h2,h3,h4,h5,h6,p,li {
+	font-family: arial;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+/*Animations*/
 .fade-in {
 	opacity: 1;
 	transition: opacity 5s ease;

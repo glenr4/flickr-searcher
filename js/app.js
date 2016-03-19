@@ -25,9 +25,6 @@ angular.module('flickrApp', ['ngMessages', 'ngAnimate'])
 				$scope.imgFade = true;	
 			}, 0);
 			
-
-			console.log(response);
-
 			// Update search status
 			foundStatus(response);
 			},
