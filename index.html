@@ -25,6 +25,9 @@
 	</section>
 
 	<section>
+		<p>{{searchStatus}}</p>
+
+
 		<div ng-repeat="photo in photos">
 			<img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" alt={{searchTag}}>
 		</div>

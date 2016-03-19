@@ -20,11 +20,25 @@ angular.module('flickrApp', ['ngMessages'])
 		})
 		.then(function(response){
 			$scope.photos = response.data.photos.photo;
+
+			// Update search status
+			searchStatus(false);
 		});
 
-		// Reset form
-		$scope.searchTag = "";
-		$scope.searchForm.$setPristine();
+		// Update search status
+		searchStatus(true);
+	};
+
+	searchStatus = function(searching){
+		if (searching) {
+			$scope.searchStatus = "Searching Flickr for photos tagged with '"+ $scope.searchTag +"'";
+
+			// Reset form
+			$scope.searchTag = "";
+			$scope.searchForm.$setPristine();
+		} else {
+			$scope.searchStatus = "";			
+		};
 	};
 
 
