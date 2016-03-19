@@ -18,7 +18,7 @@ angular.module('flickrApp', ['ngMessages'])
 			params: params
 		})
 		.then(function(response){
-			console.log(response);
+			$scope.photos = response.data.photos.photo;
 		});
 	};
 

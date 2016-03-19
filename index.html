@@ -11,16 +11,26 @@
 </head>
 
 <body ng-app="flickrApp" ng-controller="flickrCtrl">
-	<h1>Flickr Searcher</h1>
-	<form name="searchForm" novalidate ng-submit="searchForm.$valid && submit()">
-		<input type="text" name="searchTag" placeholder="Enter a tag to search for" ng-model="searchTag" ng-required="searchForm.$submitted">
-		
-		<div ng-messages="searchForm.searchTag.$error">
-			<p class="input-error-msg" ng-message="required">This field is required</p>
-		</div>
-		
-		<button type="submit" name="submit">Submit</button>
+	<section>
+		<h1>Flickr Searcher</h1>
+		<form name="searchForm" novalidate ng-submit="searchForm.$valid && submit()">
+			<input type="text" name="searchTag" placeholder="Enter a tag to search for" ng-model="searchTag" ng-required="searchForm.$submitted">
+			
+			<div ng-messages="searchForm.searchTag.$error">
+				<p class="input-error-msg" ng-message="required">This field is required</p>
+			</div>
+			
+			<button type="submit" name="submit">Submit</button>
+		</form>
+	</section>
 
-	</form>
+	<section>
+		<div ng-repeat="photo in photos">
+			<img ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}.jpg" alt={{searchTag}}>
+		</div>
+
+
+	</section>
+
 </body>
 </html>
